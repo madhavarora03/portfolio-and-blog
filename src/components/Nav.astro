@@ -1,23 +1,40 @@
 ---
-import { navData } from "@/data/navdata";
+import { navData } from "@/data/nav-data";
 import { Icon } from "astro-icon/components";
 ---
 
-<nav class="navbar bg-base-300">
+<nav class="navbar bg-base-300 md:px-12 sm:px-8 px-4">
   <div class="flex-1">
-    <a href="/" class="">
-      <Icon name="logomark" width={60} height={60} />
+    <a href="/">
+      <Icon
+        name="logomark"
+        class="text-primary color-transition"
+        width={60}
+        height={60}
+      />
     </a>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
       {
         navData.map(({ name, href }: NavData) => (
-          <li>
-            <a href={href} class="text-xl">{name}</a>
+          <li class="color-transition">
+            <a href={href} class="text-xl" data-navLink>
+              {name}
+            </a>
           </li>
         ))
       }
     </ul>
   </div>
 </nav>
+
+<script>
+  const navLinks = document.querySelectorAll("[data-navLink]");
+
+  navLinks.forEach((link) => {
+    if (link.getAttribute("href") === window.location.pathname) {
+      link.classList.add("text-primary");
+    }
+  });
+</script>

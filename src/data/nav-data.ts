@@ -1,10 +1,10 @@
 export const navData: NavData[] = [
   {
     name: "About",
-    href: "/about",
+    href: "/about/",
   },
   {
     name: "Blog",
-    href: "/blog",
+    href: "/blog/",
   },
 ];

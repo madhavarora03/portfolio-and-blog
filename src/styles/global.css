@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-atkinson;
+}
+
+.color-transition {
+  @apply hover:text-primary/80 transition-colors ease-in-out duration-200;
+}

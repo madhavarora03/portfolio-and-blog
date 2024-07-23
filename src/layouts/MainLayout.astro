@@ -1,5 +1,7 @@
 ---
+import Footer from "@/components/Footer.astro";
 import Nav from "@/components/Nav.astro";
+import "@/styles/global.css";
 import MainHead from "./MainHead.astro";
 
 interface Props {
@@ -13,12 +15,13 @@ const {
 } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" data-theme="dark">
   <MainHead {title} {description} />
-  <Nav />
   <body>
+    <Nav />
     <main>
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
