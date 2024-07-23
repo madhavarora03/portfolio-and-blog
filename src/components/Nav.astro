@@ -1,0 +1,23 @@
+---
+import { navData } from "@/data/navdata";
+import { Icon } from "astro-icon/components";
+---
+
+<nav class="navbar bg-base-300">
+  <div class="flex-1">
+    <a href="/" class="">
+      <Icon name="logomark" width={60} height={60} />
+    </a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      {
+        navData.map(({ name, href }: NavData) => (
+          <li>
+            <a href={href} class="text-xl">{name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
