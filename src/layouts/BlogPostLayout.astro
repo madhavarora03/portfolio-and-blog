@@ -1,0 +1,26 @@
+---
+import PostHeader from "@/components/PostHeader.astro";
+import MainLayout from "./MainLayout.astro";
+
+const { frontmatter } = Astro.props;
+
+const { title, description, date, category, image } = frontmatter;
+---
+
+<MainLayout {title} {description}>
+  <PostHeader {category} {title} {date} {image} />
+  <div
+    class="prose dark:prose-invert
+      prose-h1:font-bold prose-h1:text-2xl
+      prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
+      prose-p:text-justify prose-p:leading-relaxed
+      prose-img:rounded-xl
+      prose-headings:
+      max-w-5xl my-8 p-6 bg-base-100 rounded-lg"
+  >
+    <div class="prose w-full">
+      <slot />
+    </div>
+    <div class=""></div>
+  </div>
+</MainLayout>
