@@ -18,41 +18,41 @@ export function formatDate(date: string | number | Date): string {
   });
 }
 
-// export function formatBlogPosts(
-//   posts,
-//   {
-//     filterOutDrafts = true,
-//     filterOutFuturePosts = true,
-//     sortByDate = true,
-//     limit = undefined,
-//   } = {},
-// ) {
-//   const filteredPosts = posts.reduce((acc, post) => {
-//     const { date, draft } = post.frontmatter;
-//     // filterOutDrafts if true
-//     if (filterOutDrafts && draft) return acc;
+export function formatBlogPosts(
+  posts: any[],
+  {
+    filterOutDrafts = true,
+    filterOutFuturePosts = true,
+    sortByDate = true,
+    limit = undefined,
+  } = {},
+) {
+  const filteredPosts = posts.reduce((acc, post) => {
+    const { date, draft } = post.frontmatter;
+    // filterOutDrafts if true
+    if (filterOutDrafts && draft) return acc;
 
-//     // filterOutFuturePosts if true
-//     if (filterOutFuturePosts && new Date(date) > new Date()) return acc;
+    // filterOutFuturePosts if true
+    if (filterOutFuturePosts && new Date(date) > new Date()) return acc;
 
-//     // add post to acc
-//     acc.push(post);
+    // add post to acc
+    acc.push(post);
 
-//     return acc;
-//   }, []);
+    return acc;
+  }, []);
 
-//   // sortByDate or randomize
-//   if (sortByDate) {
-//     filteredPosts.sort(
-//       (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date),
-//     );
-//   } else {
-//     filteredPosts.sort(() => Math.random() - 0.5);
-//   }
+  // sortByDate or randomize
+  if (sortByDate) {
+    filteredPosts.sort(
+      (a: { frontmatter: { date: string | number | Date; }; }, b: { frontmatter: { date: string | number | Date; }; }) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date),
+    );
+  } else {
+    filteredPosts.sort(() => Math.random() - 0.5);
+  }
 
-//   // limit if number is passed
-//   if (typeof limit === "number") {
-//     return filteredPosts.slice(0, limit);
-//   }
-//   return filteredPosts;
-// }
+  // limit if number is passed
+  if (typeof limit === "number") {
+    return filteredPosts.slice(0, limit);
+  }
+  return filteredPosts;
+}

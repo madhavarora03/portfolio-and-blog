@@ -1,8 +1,10 @@
 ---
 import PostCard from "@/components/PostCard.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { formatBlogPosts } from "@/utils";
 
 const allPosts = await Astro.glob("./*md");
+const formattedPosts = formatBlogPosts(allPosts);
 ---
 
 <MainLayout title="My Blog">
@@ -10,7 +12,7 @@ const allPosts = await Astro.glob("./*md");
     <h1 class="text-4xl font-bold mb-8">New Blog Posts</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4">
       {
-        allPosts.map((post) => (
+        formattedPosts.map((post: any) => (
           <PostCard
             frontmatter={post.frontmatter}
             url={post.url}
