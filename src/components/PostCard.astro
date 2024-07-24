@@ -22,14 +22,14 @@ const { title, date, image, description, category } = frontmatter;
   <div class="card-body">
     <div>
       <Tag class="card-title">
-        <a href={url} class="link link-hover color-transition">{title}</a>
+        <a href={url} class="link link-hover link-primary">{title}</a>
       </Tag>
       <small>
         {formatDate(date)}
       </small>
     </div>
     <p>{description}</p>
-    <a href={url} class="btn btn-primary w-fit btn-sm">Read Post</a>
+    <a href={url} class="btn btn-outline btn-neutral w-fit btn-sm">Read Post</a>
   </div>
 </article>
 

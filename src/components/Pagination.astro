@@ -1,0 +1,21 @@
+---
+const { prevUrl, nextUrl } = Astro.props;
+import { Icon } from "astro-icon/components";
+---
+
+<nav class="w-full flex items-center justify-evenly">
+  {
+    prevUrl && (
+      <a href={prevUrl} class="btn btn-sm link-primary">
+        <Icon name="tabler:arrow-left" /> Previous
+      </a>
+    )
+  }
+  {
+    nextUrl && (
+      <a href={nextUrl} class="btn btn-sm link-primary">
+        Next <Icon name="tabler:arrow-right"/>
+      </a>
+    )
+  }
+</nav>
