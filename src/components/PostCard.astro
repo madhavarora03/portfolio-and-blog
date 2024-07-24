@@ -6,7 +6,9 @@ const Tag = tagType;
 const { title, date, image, description, category } = frontmatter;
 ---
 
-<article class="card bg-base-300 card-compact max-w-[90vw] sm:max-w-96 shadow-xl sm:my-6 my-3 space-y-8">
+<article
+  class="card bg-base-300 card-compact max-w-[90vw] sm:max-w-96 shadow-[0_0_30px_rgba(0,0,0,0.1)] shadow-primary/10 sm:my-6 my-3 space-y-8"
+>
   <small class="w-full mt-6 ml-6">
     <a
       href={`/category/${slugify(category)}/`}
@@ -30,3 +32,29 @@ const { title, date, image, description, category } = frontmatter;
     <a href={url} class="btn btn-primary w-fit btn-sm">Read Post</a>
   </div>
 </article>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach((card: any) => {
+      card.addEventListener("mousemove", (e: any) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const deltaX = x - centerX;
+        const deltaY = y - centerY;
+        const shadowX = deltaX / 10;
+        const shadowY = deltaY / 10;
+
+        card.style.boxShadow = `${shadowX}px ${shadowY}px 40px rgba(116, 128, 255, 0.2)`;
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.boxShadow = "0 0 30px rgba(116, 128, 255, 0.1)";
+      });
+    });
+  });
+</script>

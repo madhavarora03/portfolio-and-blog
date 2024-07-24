@@ -9,7 +9,7 @@ const formattedPosts = formatBlogPosts(allPosts);
 
 <MainLayout title="My Blog">
   <section class="sm:py-12 py-6" aria-label="New Blog Posts">
-    <h1 class="text-4xl font-bold mb-8">New Blog Posts</h1>
+    <h1 class="text-4xl font-bold mb-2">New Blog Posts</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4">
       {
         formattedPosts.map((post: any) => (

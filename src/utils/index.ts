@@ -24,10 +24,10 @@ export function formatBlogPosts(
     filterOutDrafts = true,
     filterOutFuturePosts = true,
     sortByDate = true,
-    limit = undefined,
+    limit = undefined as number | undefined,
   } = {},
-) {
-  const filteredPosts = posts.reduce((acc, post) => {
+): any[] {
+  const filteredPosts = posts.reduce((acc: any[], post) => {
     const { date, draft } = post.frontmatter;
     // filterOutDrafts if true
     if (filterOutDrafts && draft) return acc;
@@ -44,7 +44,10 @@ export function formatBlogPosts(
   // sortByDate or randomize
   if (sortByDate) {
     filteredPosts.sort(
-      (a: { frontmatter: { date: string | number | Date; }; }, b: { frontmatter: { date: string | number | Date; }; }) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date),
+      (
+        a: { frontmatter: { date: string | number | Date } },
+        b: { frontmatter: { date: string | number | Date } },
+      ) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date),
     );
   } else {
     filteredPosts.sort(() => Math.random() - 0.5);

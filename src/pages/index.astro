@@ -1,5 +1,27 @@
 ---
+import PostCard from "@/components/PostCard.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { formatBlogPosts } from "@/utils";
+
+const allPosts = await Astro.glob("./blog/*md");
+const formattedPosts = formatBlogPosts(allPosts, {
+  limit: 3,
+});
 ---
 
-<MainLayout title="My Blog" />
+<MainLayout title="My Blog">
+  <section class="sm:py-12 py-6" aria-label="New Blog Posts">
+    <h2 class="text-4xl font-bold mb-2">New Blog Posts</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4">
+      {
+        formattedPosts.map((post: any) => (
+          <PostCard
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h3"
+          />
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>
