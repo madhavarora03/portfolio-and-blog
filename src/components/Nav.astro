@@ -8,7 +8,7 @@ import { Icon } from "astro-icon/components";
     <a href="/">
       <Icon
         name="logomark"
-        class="text-primary color-transition"
+        class="text-primary color-transition w-[40px] md:w-[50px] h-auto"
         width={60}
         height={60}
       />
@@ -19,7 +19,7 @@ import { Icon } from "astro-icon/components";
       {
         navData.map(({ name, href }: NavData) => (
           <li class="color-transition">
-            <a href={href} class="text-xl" data-navLink>
+            <a href={href} class="md:text-xl text-lg" data-navLink>
               {name}
             </a>
           </li>

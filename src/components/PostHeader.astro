@@ -4,10 +4,10 @@ import { Image } from "astro:assets";
 const { category, title, date, image } = Astro.props;
 ---
 
-<header class="my-12 max-w-screen-lg mx-auto p-6 bg-base-100 rounded-lg">
+<header class="md:my-10 my-4 max-w-screen-lg mx-auto p-6 bg-base-100 rounded-lg">
   <div class="mb-6">
     <h1 class="text-4xl font-bold mb-2">{title}</h1>
-    <p class="text-gray-600 mb-2">{formatDate(date)}</p>
+    <p class="text-slate-500 mb-2">{formatDate(date)}</p>
     <small class="">
       <a href={`/category/${slugify(category)}/`} class="badge badge-accent">
         {category}
