@@ -1,0 +1,32 @@
+---
+import { formatDate, slugify } from "@/utils";
+import { Image } from "astro:assets";
+const { frontmatter, url, tagType } = Astro.props;
+const Tag = tagType;
+const { title, date, image, description, category } = frontmatter;
+---
+
+<article class="card bg-base-300 card-compact max-w-[90vw] sm:max-w-96 shadow-xl sm:my-6 my-3 space-y-8">
+  <small class="w-full mt-4 ml-4">
+    <a
+      href={`/category/${slugify(category)}/`}
+      class="badge badge-outline hover:bg-accent hover:text-base-300 hover:border-transparent badge-accent"
+      >{category}</a
+    >
+  </small>
+  <a href={url} tabindex="-1">
+    <Image src={image.src} alt={image.alt} width="400" height="250" />
+  </a>
+  <div class="card-body">
+    <div>
+      <Tag class="card-title">
+        <a href={url} class="link link-hover color-transition">{title}</a>
+      </Tag>
+      <small>
+        {formatDate(date)}
+      </small>
+    </div>
+    <p>{description}</p>
+    <a href={url} class="btn btn-primary w-fit btn-sm">Read Post</a>
+  </div>
+</article>
