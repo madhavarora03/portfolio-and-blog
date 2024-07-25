@@ -4,19 +4,17 @@ import Nav from "@/components/Nav.astro";
 import "@/styles/global.css";
 import MainHead from "./MainHead.astro";
 
-interface Props {
-  title?: string;
-  description?: string;
-}
-
 const {
   title = "My Astro Blog",
   description = "Explore my journey as a full stack web developer and AI/ML enthusiast. Read insightful blogs on learnings from projects, experiences from hackathons, and comprehensive research work. Stay updated with tutorials, guides, and personal experiences in technology and innovation.",
+  image,
+  frontmatter,
+  robots,
 } = Astro.props;
 ---
 
 <html lang="en" data-theme="dark">
-  <MainHead {title} {description} />
+  <MainHead {title} {description} {image} {frontmatter} {robots} />
   <body class="min-h-dvh flex flex-col items-center justify-between">
     <Nav />
     <main class="flex-none">
