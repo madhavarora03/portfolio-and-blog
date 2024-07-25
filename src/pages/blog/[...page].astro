@@ -1,4 +1,5 @@
 ---
+import CategoryCloud from "@/components/CategoryCloud.astro";
 import Pagination from "@/components/Pagination.astro";
 import PostCard from "@/components/PostCard.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
@@ -18,7 +19,7 @@ console.log(page);
 ---
 
 <MainLayout title="My Blog">
-  <section class="sm:py-12 py-6" aria-label="New Blog Posts">
+  <section class="sm:pt-12 pt-6 px-6 mb-4" aria-label="New Blog Posts">
     <h1 class="text-4xl font-bold mb-2">New Blog Posts</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4">
       {
@@ -33,4 +34,8 @@ console.log(page);
     </div>
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
+  <aside class="mb-6 py-4">
+    <h2 class="text-center text-2xl font-bold">Blog Categories</h2>
+    <CategoryCloud showCount={true} />
+  </aside>
 </MainLayout>
