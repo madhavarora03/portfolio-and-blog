@@ -30,11 +30,5 @@ import { Icon } from "astro-icon/components";
 </nav>
 
 <script>
-  const navLinks = document.querySelectorAll("[data-navLink]");
 
-  navLinks.forEach((link) => {
-    if (link.getAttribute("href") === window.location.pathname) {
-      link.classList.add("text-primary");
-    }
-  });
 </script>

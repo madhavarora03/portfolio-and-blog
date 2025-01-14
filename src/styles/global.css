@@ -10,3 +10,7 @@ body {
 .color-transition {
   @apply hover:text-primary/80 transition-colors ease-in-out duration-200;
 }
+
+.time-line-container > div:last-child .education__time > .education__line {
+  display: none;
+}

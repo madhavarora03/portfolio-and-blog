@@ -7,4 +7,8 @@ export const navData: NavData[] = [
     name: "Blog",
     href: "/blog/",
   },
+  {
+    name: "CV",
+    href: "/cv/",
+  },
 ];

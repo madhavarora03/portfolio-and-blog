@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer.astro";
 import Nav from "@/components/Nav.astro";
 import "@/styles/global.css";
+import { ViewTransitions } from "astro:transitions";
 import MainHead from "./MainHead.astro";
 
 const {
@@ -15,11 +16,53 @@ const {
 
 <html lang="en" data-theme="dark">
   <MainHead {title} {description} {image} {frontmatter} {robots} />
+  <ViewTransitions />
+
   <body class="min-h-dvh flex flex-col items-center justify-between">
     <Nav />
     <main class="flex-none">
       <slot />
     </main>
     <Footer />
-  </body>
+  </body><script>
+    const cardAnimation = () => {
+      const cards = document.querySelectorAll(".post-card");
+
+      cards.forEach((card: any) => {
+        card.addEventListener("mousemove", (e: any) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const deltaX = x - centerX;
+          const deltaY = y - centerY;
+          const shadowX = deltaX / 10;
+          const shadowY = deltaY / 10;
+
+          card.style.boxShadow = `${shadowX}px ${shadowY}px 40px rgba(116, 128, 255, 0.2)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.boxShadow = "0 0 30px rgba(116, 128, 255, 0.1)";
+        });
+      });
+    };
+
+    document.addEventListener("DOMContentLoaded", cardAnimation);
+    document.addEventListener("astro:after-swap", cardAnimation);
+
+    // TODO: Fix Nav transition
+    document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("astro:after-swap", () => {
+        const navLinks = document.querySelectorAll("[data-navLink]");
+
+        navLinks.forEach((link) => {
+          if (link.getAttribute("href") === window.location.pathname) {
+            link.classList.add("text-primary");
+          }
+        });
+      });
+    });
+  </script>
 </html>
